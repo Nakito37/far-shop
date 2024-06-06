@@ -10,6 +10,10 @@
           name="email"
           placeholder="Teclea tu Correo Electrónico"
         />
+        <small *ngIf="email.invalid && (email.dirty || email.touched)" class="block p-error">
+          <div *ngIf="email.errors?.['required']">Email es requerido.</div>
+          <div *ngIf="email.errors?.['email']">Email deberá ser válido</div>
+        </small>
       </div>
       <div class="field">
         <label for="password">Contraseña</label>
@@ -21,10 +25,17 @@
           name="password"
           placeholder="Ingresa tu Contraseña"
         />
-        <p-button label="Ingresar" styleClass="w-full"></p-button>
-        <div class="mt-2">
-            ¿No eres miembro? <a routerLink="#">Registrate</a>
-        </div>
+        <small *ngIf="password.invalid && (password.dirty || password.touched)" class="block p-error">
+          <div *ngIf="password.errors?.['required']">Contraseña es requerida.</div>
+          <div *ngIf="password.errors?.['pattern']">La contraseña debe tener al menos 8 caracteres, incluyendo una letra minúscula, una mayúscula y un carácter especial.</div>
+        </small>
       </div>
+      <p-button label="Ingresar" styleClass="w-full" [disabled]="loginForm.invalid"></p-button>
+      <div class="mt-2">
+        ¿No eres miembro? <a routerLink="/register">Registrate</a>
+    </div>
     </p-card>
   </form>
+  
+
+  
