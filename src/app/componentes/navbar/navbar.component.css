@@ -1,0 +1,4 @@
+p-toolbar{
+    border-radius: 3em;
+    background-image: linear-gradient(to right, var(--bluegray-500), var(--bluegray-800));
+}
